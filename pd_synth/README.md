@@ -2,7 +2,6 @@
 
 This synthesizer makes use of several Puredata abstractions:
 - lofidelay~
-- scope~
 - gain~
 - midiminor
 

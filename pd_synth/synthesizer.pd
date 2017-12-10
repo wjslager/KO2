@@ -1,4 +1,4 @@
-#N canvas 62 0 1826 1010 10;
+#N canvas 62 453 1826 557 10;
 #X obj 309 759 gain~;
 #X obj 335 759 gain~;
 #X obj 309 957 dac~;
@@ -26,19 +26,19 @@
 #X obj 579 19 ctlin;
 #X obj 579 67 pack 0 0;
 #X obj 579 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2250 1;
+-1 -1 2450 1;
 #X obj 598 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3550 1;
+-1 -1 0 1;
 #X obj 618 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 200 1;
+-1 -1 0 1;
 #X obj 638 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4900 1;
+-1 -1 0 1;
 #X obj 657 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 677 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 697 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1050 1;
+-1 -1 0 1;
 #X obj 716 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 579 43 swap;
@@ -73,7 +73,7 @@
 #X obj 230 258 * 12;
 #X obj 160 284 +~;
 #X obj 229 192 * 0.05;
-#X floatatom 186 320 3 0 0 0 - - -, f 3;
+#X floatatom 185 306 3 0 0 0 - - -, f 3;
 #X floatatom 48 286 5 0 0 0 - - -, f 5;
 #X obj 172 568 overdrive~ 1.1;
 #X obj 441 503 log;
@@ -82,7 +82,7 @@
 #X obj 444 723 *~ 0.5;
 #X obj 394 725 *~ 0.5;
 #X text 87 285 Pitch;
-#X text 208 317 Octave;
+#X text 207 303 Octave;
 #X obj 78 243 - 24;
 #X obj 174 536 +~;
 #X obj 100 538 -~ 0.5;
@@ -127,6 +127,18 @@
 #X text 912 136 voeg filter toe;
 #X msg 510 785 0.5;
 #X obj 511 755 loadbang;
+#X obj 913 225 import mrpeach;
+#X obj 928 472 packOSC;
+#X obj 928 595 udpsend;
+#X obj 928 409 pack 0 0;
+#X obj 948 369 t b f;
+#X obj 928 335 r pitch;
+#X obj 983 337 r octave;
+#X obj 46 314 s pitch;
+#X obj 187 330 s octave;
+#X msg 955 551 connect localhost 12000;
+#X msg 1117 553 disconnect;
+#X msg 925 440 send /pitch \$1 \$2;
 #X connect 0 0 3 0;
 #X connect 0 0 106 0;
 #X connect 0 1 1 1;
@@ -189,6 +201,8 @@
 #X connect 55 0 58 0;
 #X connect 56 0 19 0;
 #X connect 57 0 53 0;
+#X connect 58 0 118 0;
+#X connect 59 0 117 0;
 #X connect 60 0 7 1;
 #X connect 61 0 96 0;
 #X connect 62 0 61 0;
@@ -246,3 +260,12 @@
 #X connect 105 0 88 0;
 #X connect 108 0 85 0;
 #X connect 109 0 108 0;
+#X connect 111 0 112 0;
+#X connect 113 0 121 0;
+#X connect 114 0 113 0;
+#X connect 114 1 113 1;
+#X connect 115 0 113 0;
+#X connect 116 0 114 0;
+#X connect 119 0 112 0;
+#X connect 120 0 112 0;
+#X connect 121 0 111 0;

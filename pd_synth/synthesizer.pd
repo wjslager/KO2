@@ -1,4 +1,4 @@
-#N canvas 62 453 1826 557 10;
+#N canvas 61 4 1211 1002 10;
 #X obj 309 759 gain~;
 #X obj 335 759 gain~;
 #X obj 309 957 dac~;
@@ -26,7 +26,7 @@
 #X obj 579 19 ctlin;
 #X obj 579 67 pack 0 0;
 #X obj 579 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2450 1;
+-1 -1 1650 1;
 #X obj 598 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 618 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
@@ -38,7 +38,7 @@
 #X obj 677 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 697 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1900 1;
 #X obj 716 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 579 43 swap;
@@ -121,24 +121,33 @@
 #X obj 494 507 * -2;
 #X obj 494 529 + 1;
 #X obj 434 579 +~ 0;
-#X obj 635 546 * 7;
-#X obj 633 571 + 10;
+#X obj 638 526 * 7;
+#X obj 636 551 + 10;
 #X obj 866 905 *~ 0.25;
 #X text 912 136 voeg filter toe;
 #X msg 510 785 0.5;
 #X obj 511 755 loadbang;
 #X obj 913 225 import mrpeach;
-#X obj 928 472 packOSC;
+#X obj 928 459 packOSC;
 #X obj 928 595 udpsend;
-#X obj 928 409 pack 0 0;
-#X obj 948 369 t b f;
-#X obj 928 335 r pitch;
-#X obj 983 337 r octave;
+#X obj 1093 397 pack 0 0;
+#X obj 1111 366 t b f;
+#X obj 1093 335 r pitch;
+#X obj 1144 335 r octave;
 #X obj 46 314 s pitch;
 #X obj 187 330 s octave;
 #X msg 955 551 connect localhost 12000;
 #X msg 1117 553 disconnect;
-#X msg 925 440 send /pitch \$1 \$2;
+#X msg 1093 428 send /pitch \$1 \$2;
+#X obj 928 397 pack 0 0;
+#X obj 946 366 t b f;
+#X obj 928 335 r delay;
+#X obj 979 335 r feedback;
+#X obj 596 589 s delay;
+#X obj 749 649 s feedback;
+#X floatatom 799 709 5 0 0 0 - - -, f 5;
+#X floatatom 833 711 5 0 0 0 - - -, f 5;
+#X msg 928 428 sendtyped /delay ff \$1 \$2;
 #X connect 0 0 3 0;
 #X connect 0 0 106 0;
 #X connect 0 1 1 1;
@@ -168,6 +177,8 @@
 #X connect 22 0 63 0;
 #X connect 23 0 86 2;
 #X connect 23 0 87 2;
+#X connect 23 0 127 0;
+#X connect 23 0 129 0;
 #X connect 24 0 34 0;
 #X connect 24 1 34 1;
 #X connect 24 1 83 0;
@@ -258,6 +269,8 @@
 #X connect 104 0 105 0;
 #X connect 105 0 86 1;
 #X connect 105 0 88 0;
+#X connect 105 0 126 0;
+#X connect 105 0 128 0;
 #X connect 108 0 85 0;
 #X connect 109 0 108 0;
 #X connect 111 0 112 0;
@@ -269,3 +282,9 @@
 #X connect 119 0 112 0;
 #X connect 120 0 112 0;
 #X connect 121 0 111 0;
+#X connect 122 0 130 0;
+#X connect 123 0 122 0;
+#X connect 123 1 122 1;
+#X connect 124 0 122 0;
+#X connect 125 0 123 0;
+#X connect 130 0 111 0;

@@ -1,4 +1,4 @@
-#N canvas 61 4 1211 1002 10;
+#N canvas 61 4 1367 1002 10;
 #X obj 309 759 gain~;
 #X obj 335 759 gain~;
 #X obj 309 957 dac~;
@@ -26,7 +26,7 @@
 #X obj 579 19 ctlin;
 #X obj 579 67 pack 0 0;
 #X obj 579 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1650 1;
+-1 -1 2500 1;
 #X obj 598 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 618 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
@@ -38,9 +38,9 @@
 #X obj 677 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 697 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1900 1;
+-1 -1 2950 1;
 #X obj 716 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 800 1;
 #X obj 579 43 swap;
 #X obj 345 197 * 0.5;
 #X obj 372 398 * 0.103;
@@ -48,7 +48,7 @@
 #X obj 126 215 midiminor;
 #X obj 126 149 * 0.189;
 #X obj 736 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 4900 1;
 #X obj 756 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 775 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
@@ -123,7 +123,7 @@
 #X obj 434 579 +~ 0;
 #X obj 638 526 * 7;
 #X obj 636 551 + 10;
-#X obj 866 905 *~ 0.25;
+#X obj 1390 892 *~ 0.25;
 #X text 912 136 voeg filter toe;
 #X msg 510 785 0.5;
 #X obj 511 755 loadbang;
@@ -134,7 +134,7 @@
 #X obj 1111 366 t b f;
 #X obj 1093 335 r pitch;
 #X obj 1144 335 r octave;
-#X obj 46 314 s pitch;
+#X obj 45 315 s pitch;
 #X obj 187 330 s octave;
 #X msg 955 551 connect localhost 12000;
 #X msg 1117 553 disconnect;
@@ -148,6 +148,7 @@
 #X floatatom 799 709 5 0 0 0 - - -, f 5;
 #X floatatom 833 711 5 0 0 0 - - -, f 5;
 #X msg 928 428 sendtyped /delay ff \$1 \$2;
+#X msg 1210 428 send /shake;
 #X connect 0 0 3 0;
 #X connect 0 0 106 0;
 #X connect 0 1 1 1;
@@ -288,3 +289,4 @@
 #X connect 124 0 122 0;
 #X connect 125 0 123 0;
 #X connect 130 0 111 0;
+#X connect 131 0 111 0;

@@ -1,59 +1,64 @@
 class Cube {
-  int x, y, z;
-  float r, g, b;
-  float yRotate;
-  float rotateInc;
-  color c;
-  float size, rand;
-  int index;
+  int cX, cY, cZ;
+  float cR, cG, cB;
+  float cYRotate;
+  float cRotateInc;
+  float cSize;
+  float cRand;
+  int cIndex;
+
+  // ==== ==== ===== C O N S T R U C T O R ==== ==== ==== //
 
   Cube(float sizeArg, float randArg, int indexArg) {
-    x = 0; 
-    y = 0; 
-    z = 0;
-    yRotate = 0;
-    rotateInc = 0.01;
-    c = color(random(100), random(100), 255, 150);
-    size = sizeArg;
-    rand = randArg;
-    index = indexArg;
+    cX = 0; 
+    cY = 0; 
+    cZ = 0;
+    cYRotate = 0;
+    cRotateInc = 0.01;
+    cSize = sizeArg;
+    cRand = randArg;
+    cIndex = indexArg;
   }
+  
+  // ==== ==== ===== D I S P L A Y ==== ==== ==== //
 
   void display() {
     pushMatrix();
 
     // Move
-    translate(x + (width*0.5), y + (height*0.5), z);
+    translate(cX + (width*0.5), cY + (height*0.5), cZ);
 
     // Rotate
-    rotateZ(index * 0.1);                          // Turns each cube slightly to separate all cubes
-    rotateY(yRotate);
+    rotateZ(cIndex * 0.1);                          // Turns each cube slightly to separate all cubes
+    rotateY(cYRotate);
     rotateX(pdDelayMS * 0.001);                    // Rotate based on the delay time
-    yRotate += (pdAmpL * 0.02) + (pdAmpR * 0.02);  // Rotating increment based on amplitude
+    cYRotate += (pdAmpL * 0.02) + (pdAmpR * 0.02);  // Rotating increment based on amplitude
 
     // Color the box based on it's type
-    if (index >= 0) {                              // Array cubes
-      stroke(r, g, b, 50);                        // Delay feedback -> stroke brightness
+    if (cIndex >= 0) {                              // Array cubes
+      stroke(cR, cG, cB, 50);                        // Delay feedback -> stroke brightness
       strokeWeight(1);
-      fill(r, g, b, 150);
+      fill(cR, cG, cB, 150);
     } else {                                       // Main cube
       noFill();
       strokeWeight(10 * pdAmpL * pdAmpR);          // Amplitude -> Strokeweight
-      stroke(r, g, b, 255);
+      stroke(cR, cG, cB, 255);
     }
     
     // Draw
-    box(size);
+    box(cSize);
 
     popMatrix();
   }
 
+  // ==== ==== ===== S H A K E ==== ==== ==== //
+  
   void shake() {
-    r = random(100);
-    g = random(255);
-    b = 255; 
-    x = int(random(rand) - (rand * 0.5));
-    y = int(random(rand) - (rand * 0.5));
-    z = int(random(rand) - (rand * 0.5));
+    cR = random(100);
+    cG = random(255);
+    cB = 255; 
+    cX = int(random(cRand) - (cRand * 0.5));
+    cY = int(random(cRand) - (cRand * 0.5));
+    cZ = int(random(cRand) - (cRand * 0.5));
   }
 }

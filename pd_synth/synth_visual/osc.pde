@@ -15,8 +15,8 @@ void oscEvent(OscMessage theOscMessage) {
     }
     mainCube.shake();
   } else if (oscSign.equals("/amp")) {           // amp values
-    pdAmpL = theOscMessage.get(0).floatValue() * 2.5;
-    pdAmpR = theOscMessage.get(1).floatValue() * 2.5;
+    pdAmpL = theOscMessage.get(0).floatValue() * 3;
+    pdAmpR = theOscMessage.get(1).floatValue() * 3;
   } else if (oscSign.equals("/fmon")) {
     pdFM = true;
   } else if (oscSign.equals("/fmoff")) {

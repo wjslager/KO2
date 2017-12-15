@@ -1,5 +1,5 @@
 void printXYZ() {
-  Serial.print(" X = ");
+  Serial.print("X = ");
   Serial.print(sensX, 3);
   Serial.print(" Y = ");
   Serial.print(sensY, 3);

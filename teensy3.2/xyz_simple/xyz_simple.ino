@@ -24,9 +24,9 @@ void loop()
   sensZ = xyzSens.readFloatAccelZ();
 
   //  printXYZ();
-  //    plotXYZ();
+  plotXYZ();
 
-  delay(500);
+  delay(100);
 }
 
 

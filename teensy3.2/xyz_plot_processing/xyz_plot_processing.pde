@@ -13,7 +13,7 @@ float x = 0, y = 0, z = 0;
 
 void setup()
 {
-  size(300, 300, P3D);
+  size(600, 600, P3D);
 
   // Start listening to serial communication
   try {

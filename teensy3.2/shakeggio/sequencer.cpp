@@ -3,7 +3,7 @@
 
 Sequencer::Sequencer(float newTriggerLength)
 {
-  triggerCount = 0;
+  triggerCount = -1;
   this->setTriggerLength(newTriggerLength);
 }
 

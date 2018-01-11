@@ -26,11 +26,11 @@
 #X obj 579 19 ctlin;
 #X obj 579 67 pack 0 0;
 #X obj 579 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3704 1;
+-1 -1 4013 1;
 #X obj 598 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 733 1;
 #X obj 618 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 4900 1;
 #X obj 638 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 657 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
@@ -38,9 +38,9 @@
 #X obj 677 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 697 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4900 1;
+-1 -1 0 1;
 #X obj 716 128 vsl 10 50 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4900 1;
+-1 -1 2006 1;
 #X obj 579 43 swap;
 #X obj 322 173 * 0.5;
 #X obj 334 376 * 0.103;
@@ -102,7 +102,7 @@
 #X obj 579 91 route 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 ;
 #X obj 447 696 hsl 128 15 0.01 1 1 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10173 1;
+-1 -1 8262 1;
 #X obj 568 652 lofidelay~ 1900 0.5;
 #X obj 573 623 lofidelay~ 1500 0.5;
 #X obj 634 599 + 10;
@@ -171,6 +171,12 @@
 #X obj 129 668 s~ fx;
 #X obj 518 592 r~ fx;
 #X msg 674 721 0.2;
+#X msg 709 784 2;
+#X obj 700 827 +;
+#X floatatom 703 859 5 0 0 0 - - -, f 5;
+#X obj 703 886 - 1;
+#X floatatom 704 913 5 0 0 0 - - -, f 5;
+#X text 757 912 quick maths;
 #X connect 0 0 3 0;
 #X connect 0 0 129 0;
 #X connect 0 1 1 1;
@@ -334,3 +340,8 @@
 #X connect 149 0 87 0;
 #X connect 149 0 86 0;
 #X connect 150 0 85 0;
+#X connect 151 0 152 0;
+#X connect 151 0 152 1;
+#X connect 152 0 153 0;
+#X connect 153 0 154 0;
+#X connect 154 0 155 0;

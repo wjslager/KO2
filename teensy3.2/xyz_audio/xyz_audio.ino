@@ -4,7 +4,7 @@
 #include <SD.h>
 #include <SerialFlash.h>
 #include "SparkFunLIS3DH.h"
-#include "above.h"
+#include "floatsmoothing.h"
 
 // GUItool: begin automatically generated code
 AudioSynthWaveform       fm_modulator;   //xy=185.01040649414062,289.99999237060547
@@ -22,28 +22,35 @@ LIS3DH xyzSens;
 float sensX = 0;
 float sensY = 0;
 float sensZ = 0;
+float smoothX = 0;
+float smoothY = 0;
+float smoothZ = 0;
+
+float pitch = 0;
+
+FloatSmoothing smX(0.01);
+FloatSmoothing smY(0.1);
+FloatSmoothing smZ(0.01);
 
 void setup()
 {
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
+
   Serial.begin(9600);
+  delay(1000);
   xyzSens.begin();
 
   /* ==== AUDIO ==== */
   AudioMemory(16);
-  
+
   fm_modulator.begin(1, 70, WAVEFORM_SINE);
   fm_modulator.frequency(mtof(52));
 
-  // Modulator attenuation
   fm_mod_mix.gain(0, 0.5);
 
   fm_carrier.frequency(mtof(40));
   fm_carrier.amplitude(1);
-
-
-  // Turn the led on to prove the teensy still runs
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
 }
 
 void loop()
@@ -52,14 +59,34 @@ void loop()
   sensX = xyzSens.readFloatAccelX();
   sensY = xyzSens.readFloatAccelY();
   sensZ = xyzSens.readFloatAccelZ();
+  smoothX = smX.smooth(sensX);
+  smoothY = smX.smooth(sensY);
+  smoothZ = smX.smooth(sensZ);
 
-  fm_modulator.frequency(mtof(52 + (12 * sensX)));
-  fm_mod_mix.gain(0, sensY);
-  fm_carrier.frequency(mtof(40 + (12 * sensX)));
+  pitch = mtof(60 + (12 * smoothX));
 
+  fm_modulator.frequency(pitch);
+  fm_mod_mix.gain(0, smoothY * 3);
+  fm_carrier.frequency(pitch * (2 + smoothZ));
+
+  fm_carrier.amplitude(clip(smoothX + smoothY + smoothZ, 0, 1));
+
+  printXYZ();
+  delay(1);
+}
+
+void printXYZ()
+{
   Serial.print(sensX);
   Serial.print(" ");
   Serial.print(sensY);
   Serial.print(" ");
-  Serial.println(sensZ);
+  Serial.print(sensZ);
+  Serial.print(" ");
+  Serial.print(smoothX);
+  Serial.print(" ");
+  Serial.print(smoothY);
+  Serial.print(" ");
+  Serial.println(smoothZ);
 }
+

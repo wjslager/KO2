@@ -3,13 +3,12 @@
 
 const int smoothingFactor = 20;
 
-class ValueSmoothing {
+class IntSmoothing {
   public:
-    ValueSmoothing();
+    IntSmoothing();
     int smooth(int inputValue);
   private:
     int history[smoothingFactor];
     int historyIndex = 0;
     int total = 0;
 };
-

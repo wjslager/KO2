@@ -13,7 +13,7 @@ int ldrValue = 0;
 int averageLight = 0;
 int ldrThreshold = 0;
 // Create new smoothing instance
-ValueSmoothing ldrVal;
+IntSmoothing ldrVal;
 
 // Recording values
 boolean lastLight;
@@ -44,18 +44,18 @@ void setup() {
 
 void loop() {
   // ---- ---- INPUT ---- ----  //
-  
+
   // Read and smooth ldr values
   ldrValue = ldrVal.smooth(analogRead(ldrPin));
-  
+
   // ---- ---- TRANSFORMATION ---- ----  //
-  
+
   // Start and stop recording
   dynamicRecording();
-  
+
   // Record of playback motions
   recordMotion();
-  
+
   if (printLDR) {
     Serial.print("0 ");
     Serial.print(ldrValue);
@@ -65,7 +65,7 @@ void loop() {
   }
 
   // ---- ---- OUTPUT ---- ----  //
-  
+
   delay(1);
   digitalWrite(ledPin, outputLight);
   digitalWrite(ledPinOnboard, recording);
